@@ -12,7 +12,8 @@ mixin DisposableStateMixin<T extends StatefulWidget> on State<T> implements Disp
   @mustCallSuper
   @override
   void dispose() async {
-    print('DisposableStateMixin dispose()');
+    //print('DisposableStateMixin dispose()');
+    super.dispose();
     _isDisposing = true;
     try {
       await _bag.dispose();
@@ -20,14 +21,12 @@ mixin DisposableStateMixin<T extends StatefulWidget> on State<T> implements Disp
     } catch (_) {
       _isDisposing = false;
       rethrow;
-    } finally {
-      super.dispose();
-    }
+    } finally {}
   }
 
   @override
   void autoDispose(Disposable disposable) {
-    print('DisposableStateMixin.autoDispose(Disposable: ${disposable.runtimeType})');
+    //print('DisposableStateMixin.autoDispose(Disposable: ${disposable.runtimeType})');
     if (disposable.source is ChangeNotifier) {
       _lateBag.add(disposable);
     } else {
