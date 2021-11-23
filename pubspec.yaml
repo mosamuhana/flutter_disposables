@@ -11,7 +11,7 @@ environment:
 
 dependencies:
   disposables:
-    path: ../dart_disposables/
+    git: https://github.com/mosamuhana/dart_disposables
   flutter:
     sdk: flutter
 
