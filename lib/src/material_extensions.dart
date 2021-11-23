@@ -1,171 +1,85 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter/widgets.dart';
 import 'package:flutter/gestures.dart';
-//import 'package:flutter/services.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
+//import 'package:flutter/widgets.dart';
+//import 'package:flutter/services.dart';
 
 import 'package:disposables/disposables.dart';
 
 extension WidgetsBindingExtension on WidgetsBinding {
-  SyncDisposable addDisposableObserver<T extends WidgetsBinding>(WidgetsBindingObserver observer) {
+  Disposable addDisposableObserver<T extends WidgetsBinding>(WidgetsBindingObserver observer) {
     addObserver(observer);
-    return Disposable.callback(() => removeObserver(observer));
+    return Disposable.sync(this, () {
+      removeObserver(observer);
+    });
   }
 }
 
 extension TabControllerExtension on TabController {
-  SyncDisposable asDisposable() => Disposable.value(this, dispose);
+  Disposable get disposable => Disposable.sync(this, dispose);
 
-  TabController disposeOn(DisposableBag bag) {
-    bag.add(asDisposable());
-    return this;
-  }
-
-  TabController disposeBy(DisposableBagMixinBase m) {
-    m.autoDispose(asDisposable());
-    return this;
-  }
+  TabController disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension FocusNodeExtension on FocusNode {
-  SyncDisposable asDisposable() => Disposable.value(this, dispose);
+  Disposable get disposable => Disposable.sync(this, dispose);
 
-  FocusNode disposeOn(DisposableBag bag) {
-    bag.add(asDisposable());
-    return this;
-  }
-
-  FocusNode disposeBy(DisposableBagMixinBase m) {
-    m.autoDispose(asDisposable());
-    return this;
-  }
+  FocusNode disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension ScrollControllerExtension on ScrollController {
-  SyncDisposable asDisposable() => Disposable.value(this, dispose);
+  Disposable get disposable => Disposable.sync(this, dispose);
 
-  ScrollController disposeOn(DisposableBag bag) {
-    bag.add(asDisposable());
-    return this;
-  }
-
-  ScrollController disposeBy(DisposableBagMixinBase m) {
-    m.autoDispose(asDisposable());
-    return this;
-  }
+  ScrollController disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension TextEditingControllerExtension on TextEditingController {
-  SyncDisposable asDisposable() => Disposable.value(this, dispose);
+  Disposable get disposable => Disposable.sync(this, dispose);
 
-  TextEditingController disposeOn(DisposableBag bag) {
-    bag.add(asDisposable());
-    return this;
-  }
-
-  TextEditingController disposeBy(DisposableBagMixinBase m) {
-    m.autoDispose(asDisposable());
-    return this;
-  }
+  TextEditingController disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension DisposableBuildContextExtension on DisposableBuildContext {
-  SyncDisposable asDisposable() => Disposable.value(this, dispose);
+  Disposable get disposable => Disposable.sync(this, dispose);
 
-  DisposableBuildContext disposeOn(DisposableBag bag) {
-    bag.add(asDisposable());
-    return this;
-  }
-
-  DisposableBuildContext disposeBy(DisposableBagMixinBase m) {
-    m.autoDispose(asDisposable());
-    return this;
-  }
+  DisposableBuildContext disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension GestureRecognizerExtension on GestureRecognizer {
-  SyncDisposable asDisposable() => Disposable.value(this, dispose);
+  Disposable get disposable => Disposable.sync(this, dispose);
 
-  GestureRecognizer disposeOn(DisposableBag bag) {
-    bag.add(asDisposable());
-    return this;
-  }
-
-  GestureRecognizer disposeBy(DisposableBagMixinBase m) {
-    m.autoDispose(asDisposable());
-    return this;
-  }
+  GestureRecognizer disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension RestorationBucketExtension on RestorationBucket {
-  SyncDisposable asDisposable() => Disposable.value(this, dispose);
+  Disposable get disposable => Disposable.sync(this, dispose);
 
-  RestorationBucket disposeOn(DisposableBag bag) {
-    bag.add(asDisposable());
-    return this;
-  }
-
-  RestorationBucket disposeBy(DisposableBagMixinBase m) {
-    m.autoDispose(asDisposable());
-    return this;
-  }
+  RestorationBucket disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension ScrollActivityExtension on ScrollActivity {
-  SyncDisposable asDisposable() => Disposable.value(this, dispose);
+  Disposable get disposable => Disposable.sync(this, dispose);
 
-  ScrollActivity disposeOn(DisposableBag bag) {
-    bag.add(asDisposable());
-    return this;
-  }
-
-  ScrollActivity disposeBy(DisposableBagMixinBase m) {
-    m.autoDispose(asDisposable());
-    return this;
-  }
+  ScrollActivity disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension ScrollDragControllerExtension on ScrollDragController {
-  SyncDisposable asDisposable() => Disposable.value(this, dispose);
+  Disposable get disposable => Disposable.sync(this, dispose);
 
-  ScrollDragController disposeOn(DisposableBag bag) {
-    bag.add(asDisposable());
-    return this;
-  }
-
-  ScrollDragController disposeBy(DisposableBagMixinBase m) {
-    m.autoDispose(asDisposable());
-    return this;
-  }
+  ScrollDragController disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension SemanticsHandleExtension on SemanticsHandle {
-  SyncDisposable asDisposable() => Disposable.value(this, dispose);
+  Disposable get disposable => Disposable.sync(this, dispose);
 
-  SemanticsHandle disposeOn(DisposableBag bag) {
-    bag.add(asDisposable());
-    return this;
-  }
-
-  SemanticsHandle disposeBy(DisposableBagMixinBase m) {
-    m.autoDispose(asDisposable());
-    return this;
-  }
+  SemanticsHandle disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension TickerExtension on Ticker {
-  SyncDisposable asDisposable() => Disposable.value(this, dispose);
+  Disposable get disposable => Disposable.sync(this, dispose);
 
-  Ticker disposeOn(DisposableBag bag) {
-    bag.add(asDisposable());
-    return this;
-  }
-
-  Ticker disposeBy(DisposableBagMixinBase m) {
-    m.autoDispose(asDisposable());
-    return this;
-  }
+  Ticker disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 
@@ -173,7 +87,7 @@ extension TickerExtension on Ticker {
 extension StateExtension<T extends StatefulWidget> on State<T> {
   SyncDisposable asDisposable() => Disposable.value(this, dispose);
 
-  State<T> disposeOn(DisposableBag bag) {
+  State<T> disposeWith(DisposableBag bag) {
     bag.add(asDisposable());
     return this;
   }

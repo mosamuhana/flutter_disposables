@@ -46,7 +46,7 @@ packages:
   disposables:
     dependency: "direct main"
     description:
-      path: "../disposables"
+      path: "../dart_disposables"
       relative: true
     source: path
     version: "0.0.1"

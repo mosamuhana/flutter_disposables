@@ -3,57 +3,25 @@ import 'package:flutter/painting.dart';
 import 'package:disposables/disposables.dart';
 
 extension BoxPainterExtension on BoxPainter {
-  SyncDisposable asDisposable() => Disposable.value(this, dispose);
+  Disposable get disposable => Disposable.sync(this, dispose);
 
-  BoxPainter disposeOn(DisposableBag bag) {
-    bag.add(asDisposable());
-    return this;
-  }
-
-  BoxPainter disposeBy(DisposableBagMixinBase m) {
-    m.autoDispose(asDisposable());
-    return this;
-  }
+  BoxPainter disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension DecorationImagePainterExtension on DecorationImagePainter {
-  SyncDisposable asDisposable() => Disposable.value(this, dispose);
+  Disposable get disposable => Disposable.sync(this, dispose);
 
-  DecorationImagePainter disposeOn(DisposableBag bag) {
-    bag.add(asDisposable());
-    return this;
-  }
-
-  DecorationImagePainter disposeBy(DisposableBagMixinBase m) {
-    m.autoDispose(asDisposable());
-    return this;
-  }
+  DecorationImagePainter disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension ImageInfoExtension on ImageInfo {
-  SyncDisposable asDisposable() => Disposable.value(this, dispose);
+  Disposable get disposable => Disposable.sync(this, dispose);
 
-  ImageInfo disposeOn(DisposableBag bag) {
-    bag.add(asDisposable());
-    return this;
-  }
-
-  ImageInfo disposeBy(DisposableBagMixinBase m) {
-    m.autoDispose(asDisposable());
-    return this;
-  }
+  ImageInfo disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension ImageStreamCompleterHandleExtension on ImageStreamCompleterHandle {
-  SyncDisposable asDisposable() => Disposable.value(this, dispose);
+  Disposable get disposable => Disposable.sync(this, dispose);
 
-  ImageStreamCompleterHandle disposeOn(DisposableBag bag) {
-    bag.add(asDisposable());
-    return this;
-  }
-
-  ImageStreamCompleterHandle disposeBy(DisposableBagMixinBase m) {
-    m.autoDispose(asDisposable());
-    return this;
-  }
+  ImageStreamCompleterHandle disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }

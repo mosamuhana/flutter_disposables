@@ -51,9 +51,9 @@ packages:
     source: hosted
     version: "1.0.4"
   disposables:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
-      path: "../../disposables"
+      path: "../../dart_disposables"
       relative: true
     source: path
     version: "0.0.1"
@@ -179,3 +179,4 @@ packages:
     version: "2.1.0"
 sdks:
   dart: ">=2.14.0 <3.0.0"
+  flutter: ">=1.17.0"

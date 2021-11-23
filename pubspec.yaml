@@ -1,6 +1,8 @@
 name: flutter_disposables
-description: A new Flutter package project.
 version: 0.0.1
+description: Disposable is responsible for auto disposing resources.
+homepage: https://github.com/mosamuhana
+repository: https://github.com/mosamuhana/flutter_disposables
 publish_to: 'none'
 
 environment:
@@ -11,7 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   disposables:
-    path: ../disposables/
+    path: ../dart_disposables/
 
 dev_dependencies:
   flutter_test:
