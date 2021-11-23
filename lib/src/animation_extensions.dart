@@ -3,7 +3,7 @@ import 'package:flutter/animation.dart';
 import 'package:disposables/disposables.dart';
 
 extension AnimationEagerListenerMixinExtension on AnimationEagerListenerMixin {
-  Disposable get disposable => Disposable.sync(this, dispose);
+  Disposable<AnimationEagerListenerMixin> get disposable => Disposable.create(dispose, this);
 
   AnimationEagerListenerMixin disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }

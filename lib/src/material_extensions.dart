@@ -8,76 +8,78 @@ import 'package:flutter/scheduler.dart';
 import 'package:disposables/disposables.dart';
 
 extension WidgetsBindingExtension on WidgetsBinding {
-  Disposable addDisposableObserver<T extends WidgetsBinding>(WidgetsBindingObserver observer) {
+  Disposable<WidgetsBinding> addDisposableObserver<T extends WidgetsBinding>(
+    WidgetsBindingObserver observer,
+  ) {
     addObserver(observer);
-    return Disposable.sync(this, () {
+    return Disposable.create(() {
       removeObserver(observer);
-    });
+    }, this);
   }
 }
 
 extension TabControllerExtension on TabController {
-  Disposable get disposable => Disposable.sync(this, dispose);
+  Disposable<TabController> get disposable => Disposable.create(dispose, this);
 
   TabController disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension FocusNodeExtension on FocusNode {
-  Disposable get disposable => Disposable.sync(this, dispose);
+  Disposable<FocusNode> get disposable => Disposable.create(dispose, this);
 
   FocusNode disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension ScrollControllerExtension on ScrollController {
-  Disposable get disposable => Disposable.sync(this, dispose);
+  Disposable<ScrollController> get disposable => Disposable.create(dispose, this);
 
   ScrollController disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension TextEditingControllerExtension on TextEditingController {
-  Disposable get disposable => Disposable.sync(this, dispose);
+  Disposable<TextEditingController> get disposable => Disposable.create(dispose, this);
 
   TextEditingController disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension DisposableBuildContextExtension on DisposableBuildContext {
-  Disposable get disposable => Disposable.sync(this, dispose);
+  Disposable<DisposableBuildContext> get disposable => Disposable.create(dispose, this);
 
   DisposableBuildContext disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension GestureRecognizerExtension on GestureRecognizer {
-  Disposable get disposable => Disposable.sync(this, dispose);
+  Disposable<GestureRecognizer> get disposable => Disposable.create(dispose, this);
 
   GestureRecognizer disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension RestorationBucketExtension on RestorationBucket {
-  Disposable get disposable => Disposable.sync(this, dispose);
+  Disposable<RestorationBucket> get disposable => Disposable.create(dispose, this);
 
   RestorationBucket disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension ScrollActivityExtension on ScrollActivity {
-  Disposable get disposable => Disposable.sync(this, dispose);
+  Disposable<ScrollActivity> get disposable => Disposable.create(dispose, this);
 
   ScrollActivity disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension ScrollDragControllerExtension on ScrollDragController {
-  Disposable get disposable => Disposable.sync(this, dispose);
+  Disposable<ScrollDragController> get disposable => Disposable.create(dispose, this);
 
   ScrollDragController disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension SemanticsHandleExtension on SemanticsHandle {
-  Disposable get disposable => Disposable.sync(this, dispose);
+  Disposable<SemanticsHandle> get disposable => Disposable.create(dispose, this);
 
   SemanticsHandle disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension TickerExtension on Ticker {
-  Disposable get disposable => Disposable.sync(this, dispose);
+  Disposable<Ticker> get disposable => Disposable.create(dispose, this);
 
   Ticker disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }

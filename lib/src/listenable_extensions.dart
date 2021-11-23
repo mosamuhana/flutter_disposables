@@ -3,20 +3,20 @@ import 'package:flutter/foundation.dart';
 import 'package:disposables/disposables.dart';
 
 extension ListenableExtension on Listenable {
-  Disposable addDisposableListener(VoidCallback callback) {
+  Disposable<Listenable> addDisposableListener(VoidCallback callback) {
     addListener(callback);
-    return Disposable.sync(this, () => removeListener(callback));
+    return Disposable.create(() => removeListener(callback), this);
   }
 }
 
 extension ValueNotifierExtension<T> on ValueNotifier<T> {
-  Disposable get disposable => Disposable.sync(this, dispose);
+  Disposable<ValueNotifier<T>> get disposable => Disposable.create(dispose, this);
 
   ValueNotifier<T> disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }
 
 extension ChangeNotifierExtension on ChangeNotifier {
-  Disposable get disposable => Disposable.sync(this, dispose);
+  Disposable<ChangeNotifier> get disposable => Disposable.create(dispose, this);
 
   ChangeNotifier disposeBy(dynamic disposer) => this..disposable.disposeBy(disposer);
 }

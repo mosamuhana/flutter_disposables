@@ -11,18 +11,20 @@ class Example1Page extends StatefulWidget {
 }
 
 class _Example1PageState extends State<Example1Page> with DisposableStateMixin {
-  //final controller = TextEditingController();
   late final TextEditingController controller;
-  //late final StreamController<String> streamController;
+  String currentTime = '';
 
   @override
   void initState() {
     controller = TextEditingController().disposeBy(this);
-    Timer.periodic(const Duration(seconds: 1), (t) => print('timer.tick: ${t.tick}'))
-        .disposeBy(this);
+    Timer.periodic(const Duration(seconds: 1), (t) {
+      print('timer.tick: ${t.tick}');
+      var now = DateTime.now();
+      setState(() {
+        currentTime = '${now.hour}:${now.minute}:${now.second}';
+      });
+    }).disposeBy(this);
 
-    //streamController = StreamController<String>().disposeBy(this);
-    //streamController.disposeWith(bag);
     super.initState();
   }
 
@@ -33,6 +35,8 @@ class _Example1PageState extends State<Example1Page> with DisposableStateMixin {
       body: Center(
         child: Column(
           children: [
+            Text('Current: $currentTime'),
+            const SizedBox(height: 20),
             TextField(
               controller: controller,
             ),
