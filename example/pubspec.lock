@@ -53,11 +53,9 @@ packages:
   disposables:
     dependency: transitive
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "67216f694b68950811f04165972bc33a9de49dec"
-      url: "https://github.com/mosamuhana/dart_disposables"
-    source: git
+      path: "../../dart_disposables"
+      relative: true
+    source: path
     version: "0.0.1"
   fake_async:
     dependency: transitive
